@@ -1,0 +1,129 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Button } from '../components/react/ui/button';
+import { Mail, Globe, Server, FileText } from 'lucide-react';
+
+const services = [
+    {
+        title: 'Secure Email Hosting',
+        description:
+            'Stop using free email services for your business. Our professional email hosting ensures your communications are secure, branded, and delivered.',
+        features: [
+            'Custom domain (@yourcompany.co.za)',
+            'Spam & Virus Protection',
+            'Webmail Access',
+            'Mobile Sync',
+        ],
+        icon: Mail,
+    },
+    {
+        title: 'Corporate Identity Websites',
+        description:
+            'A professional digital presence is non-negotiable. We build sleek, fast, and responsive websites that verify your business legitimacy.',
+        features: [
+            'Responsive Design',
+            'SEO Optimized',
+            'Fast Loading',
+            'Contact Integration',
+        ],
+        icon: Globe,
+    },
+    {
+        title: 'Company Profiles',
+        description:
+            'Make a lasting impression with a professionally designed PDF company profile. Perfect for tenders and client presentations.',
+        features: [
+            'Professional Layout',
+            'Copywriting Assistance',
+            'Print Ready',
+            'Digital Format',
+        ],
+        icon: FileText,
+    },
+    {
+        title: 'Managed Hosting',
+        description:
+            'Leave the technical details to us. We handle updates, backups, and security so you can focus on running your business.',
+        features: [
+            'Daily Backups',
+            'Security Updates',
+            '99.9% Uptime',
+            'Local Support',
+        ],
+        icon: Server,
+    },
+];
+---
+
+<Layout title='Services | Apex Corporate Solutions'>
+    <section class='py-20 bg-muted/30'>
+        <div class='container mx-auto px-4 md:px-6 text-center'>
+            <h1 class='text-4xl md:text-6xl font-bold tracking-tight mb-6'>
+                Our Services
+            </h1>
+            <p class='text-xl text-muted-foreground max-w-2xl mx-auto'>
+                Comprehensive digital solutions designed to elevate your
+                corporate identity.
+            </p>
+        </div>
+    </section>
+
+    <section class='py-20'>
+        <div class='container mx-auto px-4 md:px-6'>
+            <div class='grid gap-12 md:gap-24'>
+                {
+                    services.map((service, index) => (
+                        <div
+                            class={`flex flex-col md:flex-row gap-8 md:gap-16 items-center ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}
+                        >
+                            <div class='flex-1 space-y-6'>
+                                <div class='w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center text-primary'>
+                                    <service.icon className='w-8 h-8' />
+                                </div>
+                                <h2 class='text-3xl font-bold'>
+                                    {service.title}
+                                </h2>
+                                <p class='text-lg text-muted-foreground leading-relaxed'>
+                                    {service.description}
+                                </p>
+                                <ul class='grid grid-cols-1 sm:grid-cols-2 gap-4'>
+                                    {service.features.map((feature) => (
+                                        <li class='flex items-center gap-2'>
+                                            <div class='w-1.5 h-1.5 rounded-full bg-primary' />
+                                            {feature}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                            <div class='flex-1 w-full'>
+                                <div class='aspect-video rounded-2xl bg-muted border border-border/50 flex items-center justify-center text-muted-foreground'>
+                                    {/* Placeholder for service image */}
+                                    <span class='text-sm'>
+                                        Image: {service.title}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <section class='py-20 bg-primary text-primary-foreground text-center'>
+        <div class='container mx-auto px-4 md:px-6'>
+            <h2 class='text-3xl font-bold mb-6'>
+                Ready to upgrade your business?
+            </h2>
+            <a href='/contact'>
+                <Button
+                    size='lg'
+                    variant='secondary'
+                    className='rounded-full px-8'
+                >
+                    Get in Touch
+                </Button>
+            </a>
+        </div>
+    </section>
+</Layout>

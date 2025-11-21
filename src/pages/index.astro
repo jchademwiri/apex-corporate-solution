@@ -1,11 +1,155 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import { Button } from '../components/react/ui/button';
+import ServiceCard from '../components/react/ServiceCard';
+import { Shield, Server, Headset } from 'lucide-react';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const features = [
+	{
+		title: 'Secure Email',
+		description:
+			'Enterprise-grade spam protection and 99.9% uptime guarantee for your business communications.',
+		icon: Shield,
+	},
+	{
+		title: 'Reliable Hosting',
+		description:
+			'High-performance servers with SSD storage ensuring your website loads instantly.',
+		icon: Server,
+	},
+	{
+		title: 'Expert Support',
+		description:
+			'Local South African support team ready to assist you via WhatsApp or Email.',
+		icon: Headset,
+	},
+];
 ---
 
-<Layout>
-	<Welcome />
+<Layout title='Apex Corporate Solutions | Professional Hosting & Web Design'>
+	<!-- Hero Section -->
+	<section
+		class='relative h-[90vh] flex items-center justify-center overflow-hidden bg-background'
+	>
+		<div
+			class='container mx-auto px-4 md:px-6 flex flex-col items-center text-center space-y-8 z-10'
+		>
+			<h1
+				class='text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/70 animate-in fade-in slide-in-from-bottom-4 duration-1000'
+			>
+				Defy Expectations.
+			</h1>
+			<p
+				class='text-xl md:text-2xl text-muted-foreground max-w-[800px] animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200'
+			>
+				Experience a web interface that breaks the laws of static
+				design. Professional, dynamic, and built for growth.
+			</p>
+			<div
+				class='flex gap-4 animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-300'
+			>
+				<a href='/packages'>
+					<Button
+						size='lg'
+						className='h-14 px-8 text-lg rounded-full'
+					>
+						View Packages
+					</Button>
+				</a>
+				<a href='/contact'>
+					<Button
+						variant='outline'
+						size='lg'
+						className='h-14 px-8 text-lg rounded-full'
+					>
+						Contact Us
+					</Button>
+				</a>
+			</div>
+		</div>
+
+		<!-- Decorative background elements -->
+		<div class='absolute inset-0 -z-10 overflow-hidden'>
+			<div
+				class='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl'
+			>
+			</div>
+			<div
+				class='absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-background via-background to-background'
+			>
+			</div>
+		</div>
+	</section>
+
+	<!-- Trust Bar -->
+	<section class='border-y border-border/40 bg-muted/30 py-8'>
+		<div class='container mx-auto px-4 md:px-6'>
+			<div
+				class='flex flex-wrap justify-center gap-8 md:gap-16 items-center text-muted-foreground font-medium text-sm md:text-base uppercase tracking-widest'
+			>
+				<div class='flex items-center gap-2'>
+					<span class='w-2 h-2 rounded-full bg-green-500'></span>
+					Powered by HostAfrica
+				</div>
+				<div className='flex items-center gap-2'>
+					<Shield className='w-4 h-4' />
+					Registered CIPC Entity
+				</div>
+				<div class='flex items-center gap-2'>
+					<span class='w-2 h-2 rounded-full bg-blue-500'></span>
+					Secured by SSL
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Value Grid -->
+	<section class='py-24 bg-background'>
+		<div class='container mx-auto px-4 md:px-6'>
+			<div class='text-center mb-16'>
+				<h2 class='text-3xl md:text-5xl font-bold tracking-tight mb-4'>
+					Why Choose Apex?
+				</h2>
+				<p class='text-lg text-muted-foreground max-w-2xl mx-auto'>
+					We provide the infrastructure your business needs to thrive
+					in the digital age.
+				</p>
+			</div>
+			<div class='grid grid-cols-1 md:grid-cols-3 gap-8'>
+				{
+					features.map((feature) => (
+						<ServiceCard
+							title={feature.title}
+							description={feature.description}
+							icon={feature.icon}
+						/>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<!-- The Hook -->
+	<section class='py-24 bg-primary text-primary-foreground'>
+		<div class='container mx-auto px-4 md:px-6 text-center'>
+			<h2 class='text-3xl md:text-5xl font-bold tracking-tight mb-6'>
+				A Gmail address is a business risk.
+			</h2>
+			<p
+				class='text-xl md:text-2xl text-primary-foreground/80 max-w-3xl mx-auto mb-10'
+			>
+				Switch to Professional Email today starting from just R99/month.
+				Build trust with every email you send.
+			</p>
+			<a href='/packages'>
+				<Button
+					size='lg'
+					variant='secondary'
+					className='h-14 px-10 text-lg rounded-full shadow-lg'
+				>
+					Get Professional Email
+				</Button>
+			</a>
+		</div>
+	</section>
 </Layout>

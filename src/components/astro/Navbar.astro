@@ -1,0 +1,54 @@
+---
+import ThemeToggle from '../react/ui/ThemeToggle';
+
+const links = [
+    { href: '/', label: 'Home' },
+    { href: '/services', label: 'Services' },
+    { href: '/packages', label: 'Packages' },
+    { href: '/contact', label: 'Contact' },
+];
+---
+
+<nav
+    class='sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60'
+>
+    <div
+        class='container mx-auto flex h-16 max-w-screen-2xl items-center justify-between px-4 md:px-8'
+    >
+        <div class='mr-4 flex'>
+            <a
+                class='mr-6 flex items-center space-x-2 font-bold text-xl tracking-tight'
+                href='/'
+            >
+                Apex.
+            </a>
+            <div
+                class='hidden md:flex gap-6 items-center text-sm font-medium text-muted-foreground'
+            >
+                {
+                    links.map((link) => (
+                        <a
+                            href={link.href}
+                            class='transition-colors hover:text-foreground/80 text-foreground/60 hover:text-foreground'
+                        >
+                            {link.label}
+                        </a>
+                    ))
+                }
+            </div>
+        </div>
+        <div class='flex flex-1 items-center justify-end space-x-4'>
+            <nav class='flex items-center space-x-2'>
+                <a
+                    href='https://webmail.yourdomain.co.za'
+                    target='_blank'
+                    rel='noreferrer'
+                    class='hidden md:inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2'
+                >
+                    Client Login
+                </a>
+                <ThemeToggle client:load />
+            </nav>
+        </div>
+    </div>
+</nav>
