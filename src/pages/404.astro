@@ -1,0 +1,76 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Button } from '../components/react/ui/button';
+import { ArrowLeft, Home, HelpCircle } from 'lucide-react';
+---
+
+<Layout title='404 - Page Not Found | Apex Corporate Solutions'>
+    <section
+        class='relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-background px-4 text-center py-12'
+    >
+        {/* Background decorative elements */}
+        <div
+            class='absolute top-1/2 left-1/2 -z-10 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/5 blur-[100px]'
+        >
+        </div>
+
+        <div class='relative z-10 w-full max-w-4xl mx-auto space-y-12'>
+            <div
+                class='relative flex items-center justify-center min-h-[200px] md:min-h-[280px]'
+            >
+                <h1
+                    class='text-[8rem] font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-foreground/10 to-transparent md:text-[12rem] select-none leading-none'
+                >
+                    404
+                </h1>
+                <div
+                    class='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full'
+                >
+                    <h2
+                        class='text-3xl font-bold tracking-tight md:text-5xl text-foreground'
+                    >
+                        Page Not Found
+                    </h2>
+                </div>
+            </div>
+
+            <p
+                class='mx-auto max-w-[500px] text-lg text-muted-foreground md:text-xl leading-relaxed px-4'
+            >
+                We can't seem to find the page you're looking for. It might have
+                been moved, deleted, or the link may be incorrect.
+            </p>
+
+            <div
+                class='flex flex-col items-center justify-center gap-4 sm:flex-row pt-8'
+            >
+                <a href='/'>
+                    <Button size='lg' className='gap-2 h-12 px-8'>
+                        <Home className='h-4 w-4' />
+                        Return Home
+                    </Button>
+                </a>
+                <a href='/contact'>
+                    <Button
+                        variant='outline'
+                        size='lg'
+                        className='gap-2 h-12 px-8'
+                    >
+                        <HelpCircle className='h-4 w-4' />
+                        Contact Support
+                    </Button>
+                </a>
+            </div>
+
+            <div class='pt-10'>
+                <button
+                    onclick='history.back()'
+                    class='text-sm text-muted-foreground hover:text-foreground flex items-center gap-2 mx-auto transition-colors'
+                >
+                    <ArrowLeft className='h-4 w-4' />
+                    Go back to previous page
+                </button>
+            </div>
+        </div>
+    </section>
+</Layout>
