@@ -10,7 +10,7 @@ const links = [
     { href: '/contact', label: 'Contact' },
 ];
 
-export default function MobileNav() {
+export default function MobileNav({ currentPath }: { currentPath: string }) {
     const [isOpen, setIsOpen] = useState(false);
 
     // Prevent scrolling when menu is open
@@ -58,7 +58,12 @@ export default function MobileNav() {
                         <a
                             key={link.href}
                             href={link.href}
-                            className="hover:text-primary transition-colors py-2"
+                            className={cn(
+                                "transition-colors py-2",
+                                currentPath === link.href
+                                    ? "text-primary font-semibold"
+                                    : "text-foreground/60 hover:text-primary"
+                            )}
                             onClick={() => setIsOpen(false)}
                         >
                             {link.label}
